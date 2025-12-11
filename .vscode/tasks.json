@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "if [[ \"${fileExtname}\" == \".c\" ]]; then gcc -o ${fileBasenameNoExtension} ${file}; else g++ -std=c++17 -o ${fileBasenameNoExtension} ${file}; fi",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "compile and run",
+            "type": "shell",
+            "command": "if [[ \"${fileExtname}\" == \".c\" ]]; then gcc -o ${fileBasenameNoExtension}.out ${file}; else g++ -std=c++17 -o ${fileBasenameNoExtension}.out ${file}; fi && ./${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
